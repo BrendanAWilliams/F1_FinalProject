@@ -1,0 +1,75 @@
+@page
+@model F1_FinalProject.Pages.Drivers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Driver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Driver.FirstName" class="control-label"></label>
+                <input asp-for="Driver.FirstName" class="form-control" />
+                <span asp-validation-for="Driver.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.LastName" class="control-label"></label>
+                <input asp-for="Driver.LastName" class="form-control" />
+                <span asp-validation-for="Driver.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.Number" class="control-label"></label>
+                <input asp-for="Driver.Number" class="form-control" />
+                <span asp-validation-for="Driver.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.BirthDate" class="control-label"></label>
+                <input asp-for="Driver.BirthDate" class="form-control" />
+                <span asp-validation-for="Driver.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.Country" class="control-label"></label>
+                <input asp-for="Driver.Country" class="form-control" />
+                <span asp-validation-for="Driver.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.Podiums" class="control-label"></label>
+                <input asp-for="Driver.Podiums" class="form-control" />
+                <span asp-validation-for="Driver.Podiums" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.Points" class="control-label"></label>
+                <input asp-for="Driver.Points" class="form-control" />
+                <span asp-validation-for="Driver.Points" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.GPEntered" class="control-label"></label>
+                <input asp-for="Driver.GPEntered" class="form-control" />
+                <span asp-validation-for="Driver.GPEntered" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.Championships" class="control-label"></label>
+                <input asp-for="Driver.Championships" class="form-control" />
+                <span asp-validation-for="Driver.Championships" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Driver.TeamID" class="control-label"></label>
+                <select asp-for="Driver.TeamID" class ="form-control" asp-items="ViewBag.TeamID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

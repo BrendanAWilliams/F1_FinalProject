@@ -1,0 +1,110 @@
+@page
+@model F1_FinalProject.Pages.Drivers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>F1 Drivers</h1>
+
+<p>
+    <a asp-page="Create">Create New Driver</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].Podiums)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].Points)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].GPEntered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].Championships)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver[0].Team)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Driver) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Podiums)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Points)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GPEntered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Championships)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.TeamName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.DriverID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DriverID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DriverID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<hr />
+@{
+    var prevDisabled="";
+    if (Model.PageNum <= 1)
+    {
+        prevDisabled = "disabled";
+    }
+    var nextDisabled="";
+    if (Model.PageNum >= 3)
+    {
+        nextDisabled = "disabled";
+    }
+    
+}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item @prevDisabled"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
+        <li class="page-item @nextDisabled"><a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
+    </ul>
+</nav>

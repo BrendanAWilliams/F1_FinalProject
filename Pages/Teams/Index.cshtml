@@ -1,0 +1,127 @@
+@page
+@model F1_FinalProject.Pages.Teams.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>F1 Teams</h1>
+
+<p>
+    <a asp-page="Create">Create New Team</a>
+</p>
+<form>
+    <p>
+        Team Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @{
+                    var NameSort = "Name_asc";
+                    if(Model.CurrentSort == "Name_asc")
+                    {
+                        NameSort = "Name_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@NameSort">@Html.DisplayNameFor(model => model.Team[0].TeamName)</a>
+            </th>
+            <th>
+                @{
+                    var BaseSort = "Base_asc";
+                    if(Model.CurrentSort == "Base_asc")
+                    {
+                        BaseSort = "Base_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@BaseSort">@Html.DisplayNameFor(model => model.Team[0].Base)</a>
+            </th>
+            <th>
+                @{
+                    var ChiefSort = "Chief_asc";
+                    if(Model.CurrentSort == "Chief_asc")
+                    {
+                        ChiefSort = "Chief_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@ChiefSort">@Html.DisplayNameFor(model => model.Team[0].Chief)</a>
+            </th>
+            <th>
+                @{
+                    var ChasisSort = "Chasis_asc";
+                    if(Model.CurrentSort == "Chasis_asc")
+                    {
+                        ChasisSort = "Chasis_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@ChasisSort">@Html.DisplayNameFor(model => model.Team[0].Chasis)</a>
+            </th>
+            <th>
+                @{
+                    var PowerUnitSort = "PowerUnit_asc";
+                    if(Model.CurrentSort == "PowerUnit_asc")
+                    {
+                        PowerUnitSort = "PowerUnit_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@PowerUnitSort">@Html.DisplayNameFor(model => model.Team[0].PowerUnit)</a>
+            </th>
+            <th>
+                @{
+                    var FirstEntrySort = "FirstEntry_asc";
+                    if(Model.CurrentSort == "FirstEntry_asc")
+                    {
+                        FirstEntrySort = "FirstEntry_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@FirstEntrySort">@Html.DisplayNameFor(model => model.Team[0].FirstEntry)</a>
+            </th>
+            <th>
+                @{
+                    var ChampionshipsSort = "Championships_asc";
+                    if(Model.CurrentSort == "Championships_asc")
+                    {
+                        ChampionshipsSort = "Championships_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@ChampionshipsSort">@Html.DisplayNameFor(model => model.Team[0].Championships)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Team) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Base)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chief)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chasis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PowerUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstEntry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Championships)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TeamID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TeamID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TeamID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
